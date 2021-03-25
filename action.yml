@@ -1,0 +1,20 @@
+name: Readme Projects Display
+author: Kaustubh Gupta  
+description: Updates Readme/specified file with latest projects information
+inputs:
+  gh_token:
+    description: "Github Personal Access token"
+    required: True
+  readme_path:
+    description: "Path of the file"
+    required: False
+    default: README.md
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.gh_token }}
+    - ${{ inputs.readme_path }}
+branding:
+  icon: "award"
+  color: "blue"
