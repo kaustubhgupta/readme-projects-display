@@ -55,7 +55,7 @@ project_data_sorted = dict(
 
 
 repoName = sys.argv[3].split('/')[-1]
-readme_path = '/home/runner/work/' + f'{repoName}/{repoName}/' + f'{sys.argv[2]}'
+readme_path = sys.argv[3] + f'/{sys.argv[2]}'
 with open(readme_path, 'r', encoding='utf-8') as f:
     readme = f.read()
 
