@@ -54,10 +54,13 @@ project_data_sorted = dict(
     sorted(project_data.items(), key=lambda x: x[1]['repo_stars'])[::-1])
 
 
-readme_path = root / f'{sys.argv[2]}'
+# readme_path = root / f'{sys.argv[2]}'
+repoName = sys.argv[3]
+readme_path = '/home/runner/work/' + f'{repoName}/{repoName}' + f'{sys.argv[2]}'
 readme = readme_path.open(encoding='utf-8').read()
 string_path = str(root)
-repoName = string_path.split('/')[-1]
+# repoName = string_path.split('/')[-1]
+
 readmeRepo = git.search_repositories(f"{git_username}/{repoName}")[0]
 contents = readmeRepo.get_contents(f'{sys.argv[2]}')
 
