@@ -59,7 +59,7 @@ readme_path = sys.argv[3] + f'/{sys.argv[2]}'
 with open(readme_path, 'r', encoding='utf-8') as f:
     readme = f.read()
 
-readmeRepo = git.search_repositories(f"{git_username}/{repoName}")[0]
+readmeRepo = git.get_repo(f"{git_username}/{repoName}")
 contents = readmeRepo.get_contents(f'{sys.argv[2]}')
 
 newContent = []
