@@ -53,7 +53,7 @@ print("=====================REPO CHECK ENDS=============================")
 project_data_sorted = dict(
     sorted(project_data.items(), key=lambda x: x[1]['repo_stars'])[::-1])
 
-print(sys.argv[3])
+print(sys.argv)
 
 # readme_path = root / f'{sys.argv[2]}'
 # repoName = sys.argv[3].split('/')[-1]
