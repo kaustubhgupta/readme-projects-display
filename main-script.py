@@ -53,30 +53,26 @@ print("=====================REPO CHECK ENDS=============================")
 project_data_sorted = dict(
     sorted(project_data.items(), key=lambda x: x[1]['repo_stars'])[::-1])
 
-print(sys.argv)
 
-# readme_path = root / f'{sys.argv[2]}'
-# repoName = sys.argv[3].split('/')[-1]
-# readme_path = '/home/runner/work/' + f'{repoName}/{repoName}' + f'{sys.argv[2]}'
-# readme = readme_path.open(encoding='utf-8').read()
-# string_path = str(root)
-# repoName = string_path.split('/')[-1]
+repoName = sys.argv[3].split('/')[-1]
+readme_path = '/home/runner/work/' + f'{repoName}/{repoName}' + f'{sys.argv[2]}'
+readme = readme_path.open(encoding='utf-8').read()
 
-# readmeRepo = git.search_repositories(f"{git_username}/{repoName}")[0]
-# contents = readmeRepo.get_contents(f'{sys.argv[2]}')
+readmeRepo = git.search_repositories(f"{git_username}/{repoName}")[0]
+contents = readmeRepo.get_contents(f'{sys.argv[2]}')
 
-# newContent = []
-# for project, project_detail in project_data_sorted.items():
-#     newContent.append(
-#         f'\n* [{project}]({project_detail["repo_link"]}) {project_detail["repo_stars"]}⭐ ({project_detail["repo_description"]})')
+newContent = []
+for project, project_detail in project_data_sorted.items():
+    newContent.append(
+        f'\n* [{project}]({project_detail["repo_link"]}) {project_detail["repo_stars"]}⭐ ({project_detail["repo_description"]})')
 
 
-# newContent = ' '.join(newContent)
-# rewrittenReadme = rewriteContents(readme, newContent)
-# print("=====================RESULTS=============================")
-# if rewrittenReadme != readme:
-#     print("Repo Contents Updated")
-#     readmeRepo.update_file(contents.path, "Updating Projects Section",
-#                         rewrittenReadme, contents.sha)
-# else:
-#     print("No change detected in file contents")
+newContent = ' '.join(newContent)
+rewrittenReadme = rewriteContents(readme, newContent)
+print("=====================RESULTS=============================")
+if rewrittenReadme != readme:
+    print("Repo Contents Updated")
+    readmeRepo.update_file(contents.path, "Updating Projects Section",
+                        rewrittenReadme, contents.sha)
+else:
+    print("No change detected in file contents")
