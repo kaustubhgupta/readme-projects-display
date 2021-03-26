@@ -19,7 +19,7 @@ runs:
   steps:
     - run: python -m pip install PyGithub
       shell: bash
-    - run: python ${{ github.action_path }}/main-script.py ${{ inputs.gh_token }} ${{ inputs.readme_path }} ${{ inputs.repo_name }}
+    - run: python ${{ github.action_path }}/main-script.py ${{ inputs.gh_token }} ${{ inputs.file_name }} ${{ inputs.repo_name }}
       shell: bash
 branding:
   icon: "award"
