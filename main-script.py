@@ -70,6 +70,10 @@ for project, project_detail in project_data_sorted.items():
 
 newContent = ' '.join(newContent)
 rewrittenReadme = rewriteContents(readme, newContent)
+print(repoName)
+print(readme_path)
+print(readme)
+print(readmeRepo)
 print("=====================RESULTS=============================")
 if rewrittenReadme != readme:
     print("Repo Contents Updated")
