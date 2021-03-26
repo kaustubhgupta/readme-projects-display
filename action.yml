@@ -9,17 +9,13 @@ inputs:
     description: "Name of the file"
     required: False
     default: README.md
-  repo_name:
-    description: "Repository name"
-    required: False
-    default: ${{ github.repository }}
 
 runs:
   using: "composite"
   steps:
     - run: python -m pip install PyGithub
       shell: bash
-    - run: python ${{ github.action_path }}/main-script.py ${{ inputs.gh_token }} ${{ inputs.file_name }} ${{ inputs.repo_name }}
+    - run: python ${{ github.action_path }}/main-script.py ${{ inputs.gh_token }} ${{ inputs.file_name }} ${{ github.workspace }}
       shell: bash
 branding:
   icon: "award"
