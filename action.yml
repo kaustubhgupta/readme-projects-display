@@ -14,8 +14,8 @@ runs:
   steps:
     - run: python -m pip install PyGithub
       shell: bash
-    - run: ${{ github.action_path }}/main-script.py ${{ inputs.gh_token }} ${{ inputs.readme_path }}
-      shell: python
+    - run: python main-script.py ${{ inputs.gh_token }} ${{ inputs.readme_path }}
+      shell: bash
 branding:
   icon: "award"
   color: "blue"
