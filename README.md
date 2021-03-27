@@ -62,7 +62,7 @@ _Note: The whole documentation of the action will be updated soon_
 
 
 ## Examples
-- [My Workflow File](https://github.com/kaustubhgupta/kaustubhgupta/blob/master/.github/workflows/updaters.yml)
+- [My Workflow File](https://github.com/kaustubhgupta/kaustubhgupta/blob/master/.github/workflows/updaters.yml#L24)
 
 **Happy?? Do Star ⭐ this Repo. 🤩**
 
