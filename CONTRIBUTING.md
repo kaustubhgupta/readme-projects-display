@@ -1,4 +1,4 @@
-# Contributing to PortFolioFy
+# Contributing to readme-projects-display
 👍🎉 First off, thanks for taking the time to contribute! 🎉👍
 
 Contributions are always appreciated as **no contribution is too small.**
