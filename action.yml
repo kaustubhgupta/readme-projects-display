@@ -9,13 +9,17 @@ inputs:
     description: "Name of the file"
     required: False
     default: README.md
+  max_repo_description:
+    description: "How much description you want to Display"
+    required: False
+    default: 50
 
 runs:
   using: "composite"
   steps:
     - run: python -m pip install PyGithub
       shell: bash
-    - run: python ${{ github.action_path }}/main-script.py ${{ inputs.gh_token }} ${{ inputs.file_name }} ${{ github.workspace }}
+    - run: python ${{ github.action_path }}/main-script.py ${{ inputs.gh_token }} ${{ inputs.file_name }} ${{ github.workspace }} ${{ inputs.max_repo_description }}
       shell: bash
 branding:
   icon: "award"

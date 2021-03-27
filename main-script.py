@@ -12,10 +12,9 @@ def rewriteContents(old_content, new_content):
         new_content)
     return r.sub(new_content_formated, old_content)
 
-
-root = pathlib.Path(__file__).parent.resolve()
 git = Github(sys.argv[1])
 start = git.rate_limiting[0]
+max_repo_description = int(sys.argv[4])
 print(f'Request left at start of the script: {start}')
 
 user_object = git.get_user()
@@ -32,7 +31,7 @@ for repo in repo_list:
         repo_topics = repo_object.get_topics()
         if len(repo_topics) != 0:
             if 'project' in repo_topics:
-                project_data[f'{repo}'] = {'repo_description': repo_object.description if len(repo_object.description) < 50 else repo_object.description[:50] + '...',
+                project_data[f'{repo}'] = {'repo_description': repo_object.description if len(repo_object.description) < max_repo_description else repo_object.description[:max_repo_description] + '...',
                                            'repo_stars': int(repo_object.stargazers_count),
                                            'repo_link': f'https://github.com/{git_username}/{repo}'
                                            }
@@ -70,10 +69,6 @@ for project, project_detail in project_data_sorted.items():
 
 newContent = ' '.join(newContent)
 rewrittenReadme = rewriteContents(readme, newContent)
-print(repoName)
-print(readme_path)
-print(readme)
-print(readmeRepo)
 print("=====================RESULTS=============================")
 if rewrittenReadme != readme:
     print("Repo Contents Updated")
