@@ -15,6 +15,7 @@ def rewriteContents(old_content, new_content):
 git = Github(sys.argv[1])
 start = git.rate_limiting[0]
 max_repo_description = int(sys.argv[4])
+allow_forks = bool(sys.argv[5])
 print(f'Request left at start of the script: {start}')
 
 user_object = git.get_user()
@@ -33,7 +34,8 @@ for repo in repo_list:
             if 'project' in repo_topics:
                 project_data[f'{repo}'] = {'repo_description': repo_object.description if len(repo_object.description) < max_repo_description else repo_object.description[:max_repo_description] + '...',
                                            'repo_stars': int(repo_object.stargazers_count),
-                                           'repo_link': f'https://github.com/{git_username}/{repo}'
+                                           'repo_link': f'https://github.com/{git_username}/{repo}',
+                                           'repo_forks': int(repo_object.forks_count)
                                            }
 
             else:
@@ -62,10 +64,14 @@ readmeRepo = git.get_repo(f"{git_username}/{repoName}")
 contents = readmeRepo.get_contents(f'{sys.argv[2]}')
 
 newContent = []
-for project, project_detail in project_data_sorted.items():
-    newContent.append(
-        f'\n* [{project}]({project_detail["repo_link"]}) {project_detail["repo_stars"]}⭐ ({project_detail["repo_description"]})')
-
+if allow_forks:
+    for project, project_detail in project_data_sorted.items():
+        newContent.append(
+            f'\n* [{project}]({project_detail["repo_link"]}) {project_detail["repo_stars"]}⭐, {project_detail["repo_forks"]}🍴 ({project_detail["repo_description"]})')
+else:
+    for project, project_detail in project_data_sorted.items():
+        newContent.append(
+            f'\n* [{project}]({project_detail["repo_link"]}) {project_detail["repo_stars"]}⭐ ({project_detail["repo_description"]})')
 
 newContent = ' '.join(newContent)
 rewrittenReadme = rewriteContents(readme, newContent)
