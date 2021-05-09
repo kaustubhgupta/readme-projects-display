@@ -67,7 +67,7 @@ newContent = []
 if allow_forks:
     for project, project_detail in project_data_sorted.items():
         newContent.append(
-            f'\n* [{project}]({project_detail["repo_link"]}) **{project_detail["repo_stars"]}⭐, {project_detail["repo_forks"]}I** forks ({project_detail["repo_description"]})')
+            f'\n* [{project}]({project_detail["repo_link"]}) **{project_detail["repo_stars"]}⭐, {project_detail["repo_forks"]}** forks ({project_detail["repo_description"]})')
 else:
     for project, project_detail in project_data_sorted.items():
         newContent.append(
