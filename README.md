@@ -52,7 +52,6 @@ jobs:
 ```
 
 ## Available Options
-_Note: The whole documentation of the action will be updated soon_
 
 | Option         | Default Value | Description                                                                  | Required | Example |
 | -------------- | ------------- | ---------------------------------------------------------------------------- | -------- | ------- |
