@@ -61,7 +61,7 @@ jobs:
 | `allow_forks` | True | Control if you want to display number of forks of the repository | No | False |
 
 ## Examples
-- [My Workflow File](https://github.com/kaustubhgupta/kaustubhgupta/blob/master/.github/workflows/updaters.yml#L24)
+- [My Workflow File](https://github.com/kaustubhgupta/kaustubhgupta/blob/master/.github/workflows/project-updater.yml)
 
 **Happy?? Do Star ⭐ this Repo. 🤩**
 
