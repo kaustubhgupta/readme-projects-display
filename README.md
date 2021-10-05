@@ -19,7 +19,7 @@ GitHub's Profile readme is a great tool to showcase your skills and projects to 
 <!-- PROJECTS END -->
 ```
 
-- The repositories need to have `project`  topic to add them to the project section.
+- The repositories need to have `project` topics to add them to the project section.
 
 - A GitHub personal access token will be needed which can be obtained by going to Settings > Developer Settings > Personal Access Tokens.
   <div align="center"> <img src="./images/config.png" align="center"> </div>
@@ -29,14 +29,14 @@ _Note: If you give personal repositories access then they will be added to the s
 
 ## Action Setup
 
-GitHub actions can be integrated in any repository. Create a new folder called `.github/workflows/<any-name>.yml`. Paste the following starter code:
+GitHub actions can be integrated into any repository. Create a new folder called `.github/workflows/<any-name>.yml`. Paste the following starter code:
 
 ```yml
 name: Update Projects
 on:
   schedule:
     - cron: '0 0 * * *'
-    # This makes the action to run at the end of every day. Customize this accordingly or you can also trigger this action for GitHub events (Pull, Push). Check the GitHub actions page for that.
+    # This makes the action run at the end of every day. Customize this accordingly or you can also trigger this action for GitHub events (Pull, Push). Check the GitHub actions page for that.
   workflow_dispatch:
     # workflow_dispatch allows you to trigger the action any time manually
 
@@ -56,9 +56,9 @@ jobs:
 | Option         | Default Value | Description                                                                  | Required | Example |
 | -------------- | ------------- | ---------------------------------------------------------------------------- | -------- | ------- |
 | `gh_token`     | NA            | GitHub Personal Access token                                                 | Yes      |  NA     |
-| `file_name`        | `README.md`           | Name of the readme file or any other file containing the comment mentioned above. Note: The file needs to be in root of repository. (Dynamic paths coming in next version!)                                   | No       |  myfile.txt/ myfile.html    | 
+| `file_name`        | `README.md`           | Name of the readme file or any other file containing the comment mentioned above. Note: The file needs to be at the root of the repository. (Dynamic paths coming in next version!)                                   | No       |  myfile.txt/ myfile.html    | 
 | `max_repo_description` | 50 | How much description you want to Display | No | 40 |
-| `allow_forks` | True | Control if you want to display number of forks of the repository | No | False |
+| `allow_forks` | True | Control if you want to display the number of forks of the repository | No | False |
 
 ## Examples
 - [My Workflow File](https://github.com/kaustubhgupta/kaustubhgupta/blob/master/.github/workflows/project-updater.yml)
