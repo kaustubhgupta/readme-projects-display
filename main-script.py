@@ -16,6 +16,7 @@ git = Github(sys.argv[1])
 start = git.rate_limiting[0]
 max_repo_description = int(sys.argv[4])
 allow_forks = bool(sys.argv[5])
+project_sort_by = sys.argv[6]
 print(f'Request left at start of the script: {start}')
 
 user_object = git.get_user()
@@ -51,8 +52,9 @@ print(f'Request left at end of the script: {end}')
 print(f'Requests Consumed in this process: {start - end}')
 print("=====================REPO CHECK ENDS=============================")
 
+sort_key = 'repo_' + project_sort_by
 project_data_sorted = dict(
-    sorted(project_data.items(), key=lambda x: x[1]['repo_stars'])[::-1])
+    sorted(project_data.items(), key=lambda x: x[1][sort_key])[::-1])
 
 
 repoName = sys.argv[3].split('/')[-1]
