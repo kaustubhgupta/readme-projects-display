@@ -59,6 +59,7 @@ jobs:
 | `file_name`        | `README.md`           | Name of the readme file or any other file containing the comment mentioned above. Note: The file needs to be at the root of the repository. (Dynamic paths coming in next version!)                                   | No       |  myfile.txt/ myfile.html    | 
 | `max_repo_description` | 50 | How much description you want to Display | No | 40 |
 | `allow_forks` | True | Control if you want to display the number of forks of the repository | No | False |
+| `project_sort_by` | `stars` | Control the sorting of projects by `'stars'` or `'forks'` | No | `'forks'` | 
 
 ## Examples
 - [My Workflow File](https://github.com/kaustubhgupta/kaustubhgupta/blob/master/.github/workflows/project-updater.yml)
