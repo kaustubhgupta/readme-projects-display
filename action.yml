@@ -1,5 +1,5 @@
 name: Readme Projects Display
-author: Kaustubh Gupta  
+author: Kaustubh Gupta
 description: Updates Readme/specified file with latest projects information
 inputs:
   gh_token:
@@ -10,24 +10,41 @@ inputs:
     required: False
     default: README.md
   max_repo_description:
-    description: "How much description you want to Display"
+    description: "Max characters of each repo description to display (0 hides descriptions)"
     required: False
-    default: 50
+    default: '50'
   allow_forks:
-    description: "Control if you want forks count"
+    description: "Show the forks count next to the stars (true/false)"
     required: False
-    default: True
+    default: 'true'
   project_sort_by:
-    description: "Sorting the projects according to count of number of stars or forks"
+    description: "Sort projects by 'stars', 'forks' or 'updated' (date of the latest push)"
     required: False
     default: 'stars'
+  project_topic:
+    description: "Repo topic that marks a repo as a project"
+    required: False
+    default: 'project'
+  max_projects:
+    description: "Maximum number of projects to list (0 means no limit)"
+    required: False
+    default: '0'
 
 runs:
   using: "composite"
   steps:
-    - run: python -m pip install PyGithub
+    - run: python -m pip install --quiet --upgrade PyGithub
       shell: bash
-    - run: python ${{ github.action_path }}/main-script.py ${{ inputs.gh_token }} ${{ inputs.file_name }} ${{ github.workspace }} ${{ inputs.max_repo_description }} ${{ inputs.allow_forks }} ${{ inputs.project_sort_by }}
+    - run: >-
+        python "${{ github.action_path }}/main-script.py"
+        "${{ inputs.gh_token }}"
+        "${{ inputs.file_name }}"
+        "${{ github.workspace }}"
+        "${{ inputs.max_repo_description }}"
+        "${{ inputs.allow_forks }}"
+        "${{ inputs.project_sort_by }}"
+        "${{ inputs.project_topic }}"
+        "${{ inputs.max_projects }}"
       shell: bash
 branding:
   icon: "award"
