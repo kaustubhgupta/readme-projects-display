@@ -149,7 +149,7 @@ def sort_projects(projects, sort_by):
 # --------------------------------------------------------------------------
 # README rendering
 # --------------------------------------------------------------------------
-def format_entry(project, show_forks, show_updated):
+def format_entry(project, show_forks):
     if show_forks:
         stats = f"**{project['stars']}⭐, {project['forks']}** forks"
     else:
@@ -157,13 +157,11 @@ def format_entry(project, show_forks, show_updated):
     line = f"* [{project['name']}]({project['url']}) {stats}"
     if project['description']:
         line += f" ({project['description']})"
-    if show_updated:
-        line += f" - updated {project['updated_on']}"
     return line
 
 
-def build_section(projects, show_forks, show_updated):
-    lines = [format_entry(p, show_forks, show_updated) for p in projects]
+def build_section(projects, show_forks):
+    lines = [format_entry(p, show_forks) for p in projects]
     return '\n' + '\n'.join(lines) + '\n'
 
 
@@ -239,7 +237,7 @@ def main():
         raise ScriptError(f"{file_name} is a directory, expected a file.")
     readme = contents.decoded_content.decode('utf-8')
 
-    section = build_section(projects, show_forks, show_updated=(sort_by == 'updated'))
+    section = build_section(projects, show_forks)
     rewritten = replace_section(readme, section)
 
     print("=====================RESULTS=============================")
